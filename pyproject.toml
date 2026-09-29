@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "evidence-gated-e2e-loop"
+version = "0.1.0"
+description = "Accept AI-written Playwright tests only on file evidence, then replay them without AI."
+readme = "README.md"
+license = "MIT"
+authors = [{ name = "Taemin Kim" }]
+requires-python = ">=3.11"
+dependencies = ["playwright>=1.40", "pytest>=8"]
+
+[project.scripts]
+loop = "loop.cli:main"
+
+[tool.setuptools]
+packages = ["loop", "sample_app"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,44 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: |
+          python -m pip install -e .
+          python -m playwright install --with-deps chromium
+      - name: Unit + end-to-end tests
+        run: python -m pytest -q
+      - name: Each false-success test goes red without its guard
+        run: python scripts/red_check.py
+      - name: Demo (run, planted bug replay, clean replay)
+        run: make demo
+      - name: Forbidden identifiers (list kept outside the repo, in a secret)
+        env:
+          FORBIDDEN_WORDS: ${{ secrets.FORBIDDEN_WORDS }}
+        run: |
+          if [ -z "$FORBIDDEN_WORDS" ]; then
+            echo "::warning::FORBIDDEN_WORDS secret not set - identifier scan skipped"
+            exit 0
+          fi
+          if git grep -n -i -E "$FORBIDDEN_WORDS" -- . ; then
+            echo "::error::forbidden identifier found"
+            exit 1
+          fi
+          if git log --format='%an %ae %s %b' | grep -i -E "$FORBIDDEN_WORDS"; then
+            echo "::error::forbidden identifier in git history"
+            exit 1
+          fi

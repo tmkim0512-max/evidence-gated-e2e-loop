@@ -1,0 +1,14 @@
+{
+ "feature": "cart",
+ "cases": [
+  {"id": "CART-0001", "title": "two products: total equals the sum of prices",
+   "preconditions": ["empty cart"],
+   "steps": [{"n": 1, "action": "add Notebook and Pen set", "expect": "Items: 2"},
+             {"n": 2, "action": "read the total", "expect": "Total: 30,000"}]},
+  {"id": "CART-0002", "title": "coupon SAVE10 takes 10% off",
+   "steps": [{"n": 1, "action": "add Notebook and Pen set", "expect": "Items: 2"},
+             {"n": 2, "action": "apply coupon SAVE10", "expect": "Total: 27,000"}]},
+  {"id": "CART-0003", "title": "empty cart says so",
+   "steps": [{"n": 1, "action": "open the cart", "expect": "Your cart is empty"}]}
+ ]
+}

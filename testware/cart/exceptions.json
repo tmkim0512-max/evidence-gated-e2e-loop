@@ -1,0 +1,5 @@
+{
+ "CART-0002": {"reason": "known defect: coupon codes are accepted but never applied",
+               "ref": "sample_app/server.py known-defect note",
+               "step": 2, "observed": "Total: 30,000"}
+}

@@ -1,0 +1,11 @@
+{
+ "feature": "login",
+ "cases": [
+  {"id": "LOGIN-0001", "title": "valid credentials greet the user",
+   "steps": [{"n": 1, "action": "sign in as demo/demo123", "expect": "Welcome, demo"}]},
+  {"id": "LOGIN-0002", "title": "wrong password is rejected",
+   "steps": [{"n": 1, "action": "sign in as demo/wrong", "expect": "Invalid credentials"}]},
+  {"id": "LOGIN-0003", "title": "empty username is rejected",
+   "steps": [{"n": 1, "action": "submit with no username", "expect": "Username required"}]}
+ ]
+}

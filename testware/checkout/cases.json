@@ -1,0 +1,10 @@
+{
+ "feature": "checkout",
+ "cases": [
+  {"id": "CHECKOUT-0001", "title": "placing an order with items confirms it",
+   "steps": [{"n": 1, "action": "add Notebook, place order", "expect": "Order confirmed: #1"},
+             {"n": 2, "action": "open the cart again", "expect": "Your cart is empty"}]},
+  {"id": "CHECKOUT-0002", "title": "empty cart cannot be ordered",
+   "steps": [{"n": 1, "action": "place order with an empty cart", "expect": "Cart is empty"}]}
+ ]
+}
