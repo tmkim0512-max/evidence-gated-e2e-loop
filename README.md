@@ -109,7 +109,10 @@ The test scripts under `testware/` are checked in; the AUTHOR stage only checks 
 
 ## Related
 
-- pom-scout [link]
+- [ko-tc-playwright](https://github.com/tmkim0512-max/ko-tc-playwright) — turns Korean manual test cases into Playwright (pytest) code; reports conversion rate and real run results separately
+- [pom-scout](https://github.com/tmkim0512-max/pom-scout) — explores a web app and writes Page Object JSON with selectors verified unique on the live page
+- [false-green-guard](https://github.com/tmkim0512-max/false-green-guard) — detects diffs that turn tests green by neutralizing them and re-judges fixes on an isolated copy
+- [parking-api-qa-lab](https://github.com/tmkim0512-max/parking-api-qa-lab) — a small parking API tested with pytest, a hand-built mock server, k6 thresholds and GitHub Actions
 
 ## License
 
